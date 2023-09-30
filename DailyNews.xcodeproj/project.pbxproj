@@ -13,6 +13,7 @@
 		64FCA4412AC8AE3A00C0102F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64FCA4402AC8AE3A00C0102F /* Assets.xcassets */; };
 		64FCA4442AC8AE3A00C0102F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FCA4422AC8AE3A00C0102F /* LaunchScreen.storyboard */; };
 		64FCA4532AC8B42100C0102F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA4522AC8B42100C0102F /* HomeController.swift */; };
+		64FCA4552AC8BAB700C0102F /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA4542AC8BAB700C0102F /* ReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		64FCA4432AC8AE3A00C0102F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64FCA4452AC8AE3A00C0102F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64FCA4522AC8B42100C0102F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		64FCA4542AC8BAB700C0102F /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		64FCA44E2AC8B39B00C0102F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				64FCA4542AC8BAB700C0102F /* ReusableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64FCA4532AC8B42100C0102F /* HomeController.swift in Sources */,
+				64FCA4552AC8BAB700C0102F /* ReusableView.swift in Sources */,
 				64FCA43C2AC8AE3800C0102F /* ViewController.swift in Sources */,
 				64FCA4382AC8AE3800C0102F /* AppDelegate.swift in Sources */,
 				64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */,
