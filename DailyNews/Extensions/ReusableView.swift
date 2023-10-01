@@ -9,26 +9,26 @@ import UIKit
 
 class SectionHeaderReusableView: UICollectionReusableView {
     
-    var titleLabel: UILabel!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        // Başlık etiketi oluşturun ve ayarlayın
-        titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18) // Başlık fontunu ayarlayabilirsiniz
-        titleLabel.textColor = UIColor.black // Başlık rengini ayarlayabilirsiniz
-        addSubview(titleLabel)
-        
-        // Başlık etiketinin yerleşimini ayarlayın
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16), // Sol kenara boşluk ekleyebilirsiniz
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor) // Dikey hizalamayı ayarlayabilirsiniz
-        ])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    var label: UILabel = {
+          let label: UILabel = UILabel()
+          label.textColor = .white
+          label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+          label.sizeToFit()
+          return label
+      }()
+
+      override init(frame: CGRect) {
+          super.init(frame: frame)
+
+          addSubview(label)
+
+          label.translatesAutoresizingMaskIntoConstraints = false
+          label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+          label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+          label.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+     }
+
+     required init?(coder aDecoder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+     }
 }
