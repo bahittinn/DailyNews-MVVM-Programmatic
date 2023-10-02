@@ -22,7 +22,7 @@ class HomeController: UIViewController {
     private let collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.2, height: 400)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.2, height: 200)
         layout.scrollDirection = .horizontal
         
         
@@ -40,6 +40,18 @@ class HomeController: UIViewController {
         return label
     }()
     
+    private let topicCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2.5, height: 200)
+        layout.scrollDirection = .vertical
+    
+        let collectionview = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        collectionview.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        collectionview.showsVerticalScrollIndicator = false
+        return collectionview
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,23 +66,32 @@ class HomeController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        topicCollectionView.delegate = self
+        topicCollectionView.dataSource = self
     }
     
     private func configureConstraints() {
         view.addSubview(collectionView)
         view.addSubview(titleLabel)
+        view.addSubview(topicCollectionView)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        topicCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            collectionView.heightAnchor.constraint(equalToConstant: 400),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            collectionView.heightAnchor.constraint(equalToConstant: 200),
             
             titleLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 15)
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 15),
+            
+            topicCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            topicCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            topicCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            topicCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -78,7 +99,7 @@ class HomeController: UIViewController {
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
