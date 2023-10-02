@@ -13,7 +13,7 @@ class HomeController: UIViewController {
     public var screenWidth: CGFloat {
         return UIScreen.main.bounds.width
     }
-
+    
     // Screen height.
     public var screenHeight: CGFloat {
         return UIScreen.main.bounds.height
@@ -22,14 +22,22 @@ class HomeController: UIViewController {
     private let collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2, height: 100)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.2, height: 400)
         layout.scrollDirection = .horizontal
+        
         
         let collectionview = UICollectionView(frame: .zero,collectionViewLayout: layout)
         collectionview.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
         collectionview.showsHorizontalScrollIndicator = false
         return collectionview
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 25)
+        label.text = "Topics"
+        return label
     }()
     
     override func viewDidLoad() {
@@ -50,24 +58,27 @@ class HomeController: UIViewController {
     
     private func configureConstraints() {
         view.addSubview(collectionView)
+        view.addSubview(titleLabel)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            collectionView.heightAnchor.constraint(equalToConstant: 200)
+            collectionView.heightAnchor.constraint(equalToConstant: 400),
+            
+            titleLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 15)
         ])
     }
 }
 
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-   
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,13 +87,11 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.layer.cornerRadius = 10
         return cell
     }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
+ 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+    
+    
 
 }
