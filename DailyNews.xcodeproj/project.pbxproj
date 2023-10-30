@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD612AEFBC70001CC031 /* TrendingCell.swift */; };
 		64FCA4382AC8AE3800C0102F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA4372AC8AE3800C0102F /* AppDelegate.swift */; };
 		64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA4392AC8AE3800C0102F /* SceneDelegate.swift */; };
 		64FCA43C2AC8AE3800C0102F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA43B2AC8AE3800C0102F /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		648FDD612AEFBC70001CC031 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		64FCA4342AC8AE3800C0102F /* DailyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FCA4372AC8AE3800C0102F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FCA4392AC8AE3800C0102F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +44,49 @@
 		648FDD5B2AEFA721001CC031 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				648FDD602AEFBC54001CC031 /* Cells */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		648FDD5C2AEFB9DF001CC031 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD5D2AEFBC36001CC031 /* Model */,
+				648FDD5E2AEFBC3A001CC031 /* View */,
+				648FDD5F2AEFBC3E001CC031 /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		648FDD5D2AEFBC36001CC031 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		648FDD5E2AEFBC3A001CC031 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64FCA4522AC8B42100C0102F /* HomeController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		648FDD5F2AEFBC3E001CC031 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		648FDD602AEFBC54001CC031 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD612AEFBC70001CC031 /* TrendingCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		64FCA42B2AC8AE3800C0102F = {
@@ -69,33 +112,9 @@
 				64FCA4502AC8B3A600C0102F /* Core */,
 				64FCA44F2AC8B3A100C0102F /* Network */,
 				64FCA44E2AC8B39B00C0102F /* Extensions */,
-				64FCA44B2AC8B38700C0102F /* Models */,
-				64FCA44C2AC8B38C00C0102F /* Views */,
-				64FCA44D2AC8B39600C0102F /* ViewModels */,
 				64FCA4512AC8B3BB00C0102F /* Controllers */,
 			);
 			path = DailyNews;
-			sourceTree = "<group>";
-		};
-		64FCA44B2AC8B38700C0102F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		64FCA44C2AC8B38C00C0102F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		64FCA44D2AC8B39600C0102F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		64FCA44E2AC8B39B00C0102F /* Extensions */ = {
@@ -116,6 +135,7 @@
 		64FCA4502AC8B3A600C0102F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				64FCA43B2AC8AE3800C0102F /* ViewController.swift */,
 				64FCA4422AC8AE3A00C0102F /* LaunchScreen.storyboard */,
 				64FCA4372AC8AE3800C0102F /* AppDelegate.swift */,
 				64FCA4392AC8AE3800C0102F /* SceneDelegate.swift */,
@@ -128,8 +148,7 @@
 		64FCA4512AC8B3BB00C0102F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				64FCA43B2AC8AE3800C0102F /* ViewController.swift */,
-				64FCA4522AC8B42100C0102F /* HomeController.swift */,
+				648FDD5C2AEFB9DF001CC031 /* Home */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +225,7 @@
 			files = (
 				64FCA4532AC8B42100C0102F /* HomeController.swift in Sources */,
 				64FCA4552AC8BAB700C0102F /* ReusableView.swift in Sources */,
+				648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */,
 				64FCA43C2AC8AE3800C0102F /* ViewController.swift in Sources */,
 				64FCA4382AC8AE3800C0102F /* AppDelegate.swift in Sources */,
 				64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */,

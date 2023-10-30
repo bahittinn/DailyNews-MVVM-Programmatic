@@ -28,7 +28,7 @@ final class HomeController: UIViewController {
         layout.itemSize = CGSize(width: itemWidth, height: 250)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: TrendingCell.reuseID)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -87,9 +87,9 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
-        cell.backgroundColor = .red
-        cell.layer.cornerRadius = 10
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCell.reuseID, for: indexPath) as! TrendingCell
+        cell.configure()
+        
         return cell
     }
 }
