@@ -11,15 +11,14 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
-        title = "Home"
+        view.backgroundColor = .systemBackground
         
         /// LEFT BUTTONS
         let menuButton = UIBarButtonItem(title: "Menu", image: UIImage(named: "menuicon"), target: self, action: nil)
         menuButton.tintColor = .black
         let label = UILabel()
         label.textColor = UIColor.black
-        label.font = .boldSystemFont(ofSize: 17)
+        label.font = .boldSystemFont(ofSize: 18)
         label.text = "NEWS";
         
         navigationItem.leftBarButtonItems = [menuButton, UIBarButtonItem.init(customView: label)]

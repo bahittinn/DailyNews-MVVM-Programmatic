@@ -25,16 +25,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabbar() -> UITabBarController {
         let vc = UINavigationController(rootViewController: HomeController())
         let vc2 = UINavigationController(rootViewController: ViewController())
+        let vc3 = UINavigationController(rootViewController: ViewController())
+        let vc4 = UINavigationController(rootViewController: ViewController())
         
-        vc.tabBarItem.image  = UIImage(systemName: "bell")
+        vc.tabBarItem.image  = UIImage(systemName: "house")
         vc.tabBarItem.title  = "Home"
         
-        vc2.tabBarItem.image = UIImage(systemName: "bell")
-        vc2.tabBarItem.title  = "Feed"
+        vc2.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        vc2.tabBarItem.title  = "Search"
+        
+        vc3.tabBarItem.image = UIImage(systemName: "bookmark")
+        vc3.tabBarItem.title  = "Saved"
+        
+        vc4.tabBarItem.image = UIImage(systemName: "person")
+        vc4.tabBarItem.title  = "Profile"
         
         let tabbar = UITabBarController()
-        tabbar.setViewControllers([vc, vc2], animated: true)
-        
+        tabbar.setViewControllers([vc, vc2, vc3, vc4], animated: true)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -220)
         return tabbar
     }
     
