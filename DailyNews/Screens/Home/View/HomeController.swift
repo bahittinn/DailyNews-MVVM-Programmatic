@@ -62,9 +62,9 @@ final class HomeController: UIViewController {
     private func configureNavigationBar() {
         /// LEFT BUTTONS
         let menuButton = UIBarButtonItem(title: "Menu", image: UIImage(named: "menuicon"), target: self, action: nil)
-        menuButton.tintColor = .black
+        menuButton.tintColor = .label
         let label = UILabel()
-        label.textColor = UIColor.black
+        label.textColor = .label
         label.font = .boldSystemFont(ofSize: 18)
         label.text = "NEWS";
         
@@ -72,10 +72,10 @@ final class HomeController: UIViewController {
         
         /// RIGHT BUTTONS
         let bellButton = UIBarButtonItem(title: "Bell", image: UIImage(named: "bellicon"), target: self, action: nil)
-        bellButton.tintColor = .black
+        bellButton.tintColor = .label
         
         let searchButton = UIBarButtonItem(title: "Search", image: UIImage(named: "searchicon"), target: self, action: nil)
-        searchButton.tintColor = .black
+        searchButton.tintColor = .label
                 
         navigationItem.rightBarButtonItems = [bellButton, searchButton]
     }
@@ -87,9 +87,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCell.reuseID, for: indexPath) as! TrendingCell
-        cell.configure()
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCell.reuseID, for: indexPath) as! TrendingCell        
         return cell
     }
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD612AEFBC70001CC031 /* TrendingCell.swift */; };
+		648FDD682AEFCD3C001CC031 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD672AEFCD3C001CC031 /* SearchController.swift */; };
+		648FDD722AEFCDFA001CC031 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD712AEFCDFA001CC031 /* ProfileController.swift */; };
+		648FDD742AEFCE05001CC031 /* SavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD732AEFCE05001CC031 /* SavedController.swift */; };
 		64FCA4382AC8AE3800C0102F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA4372AC8AE3800C0102F /* AppDelegate.swift */; };
 		64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA4392AC8AE3800C0102F /* SceneDelegate.swift */; };
 		64FCA43C2AC8AE3800C0102F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FCA43B2AC8AE3800C0102F /* ViewController.swift */; };
@@ -19,6 +22,9 @@
 
 /* Begin PBXFileReference section */
 		648FDD612AEFBC70001CC031 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
+		648FDD672AEFCD3C001CC031 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		648FDD712AEFCDFA001CC031 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		648FDD732AEFCE05001CC031 /* SavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedController.swift; sourceTree = "<group>"; };
 		64FCA4342AC8AE3800C0102F /* DailyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FCA4372AC8AE3800C0102F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FCA4392AC8AE3800C0102F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,102 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		648FDD632AEFCC95001CC031 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD642AEFCCA9001CC031 /* Model */,
+				648FDD652AEFCCAB001CC031 /* View */,
+				648FDD662AEFCD1D001CC031 /* ViewModel */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		648FDD642AEFCCA9001CC031 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		648FDD652AEFCCAB001CC031 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD672AEFCD3C001CC031 /* SearchController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		648FDD662AEFCD1D001CC031 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		648FDD692AEFCD8E001CC031 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD702AEFCDDA001CC031 /* Model */,
+				648FDD6F2AEFCDD2001CC031 /* View */,
+				648FDD6E2AEFCDC7001CC031 /* ViewModel */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		648FDD6A2AEFCD93001CC031 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD6B2AEFCDA1001CC031 /* Model */,
+				648FDD6C2AEFCDA6001CC031 /* View */,
+				648FDD6D2AEFCDA9001CC031 /* ViewModel */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		648FDD6B2AEFCDA1001CC031 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		648FDD6C2AEFCDA6001CC031 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD712AEFCDFA001CC031 /* ProfileController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		648FDD6D2AEFCDA9001CC031 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		648FDD6E2AEFCDC7001CC031 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		648FDD6F2AEFCDD2001CC031 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				648FDD732AEFCE05001CC031 /* SavedController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		648FDD702AEFCDDA001CC031 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		64FCA42B2AC8AE3800C0102F = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +214,7 @@
 				64FCA4502AC8B3A600C0102F /* Core */,
 				64FCA44F2AC8B3A100C0102F /* Network */,
 				64FCA44E2AC8B39B00C0102F /* Extensions */,
-				64FCA4512AC8B3BB00C0102F /* Controllers */,
+				64FCA4512AC8B3BB00C0102F /* Screens */,
 			);
 			path = DailyNews;
 			sourceTree = "<group>";
@@ -145,12 +247,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		64FCA4512AC8B3BB00C0102F /* Controllers */ = {
+		64FCA4512AC8B3BB00C0102F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				648FDD5C2AEFB9DF001CC031 /* Home */,
+				648FDD632AEFCC95001CC031 /* Search */,
+				648FDD692AEFCD8E001CC031 /* Saved */,
+				648FDD6A2AEFCD93001CC031 /* Profile */,
 			);
-			path = Controllers;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +331,12 @@
 				64FCA4532AC8B42100C0102F /* HomeController.swift in Sources */,
 				64FCA4552AC8BAB700C0102F /* ReusableView.swift in Sources */,
 				648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */,
+				648FDD682AEFCD3C001CC031 /* SearchController.swift in Sources */,
 				64FCA43C2AC8AE3800C0102F /* ViewController.swift in Sources */,
+				648FDD742AEFCE05001CC031 /* SavedController.swift in Sources */,
 				64FCA4382AC8AE3800C0102F /* AppDelegate.swift in Sources */,
 				64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */,
+				648FDD722AEFCDFA001CC031 /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

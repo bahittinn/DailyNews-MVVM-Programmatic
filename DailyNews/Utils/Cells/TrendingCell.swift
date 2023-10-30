@@ -12,15 +12,24 @@ final class TrendingCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - VARIABLES
     private let trendingNewsLabel: UILabel = {
         let label = UILabel()
+        label.text = "Trending News"
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .lightGray
+        label.textAlignment = .center
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
         return label
     }()
     
@@ -30,17 +39,79 @@ final class TrendingCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: "denemeimage")
         imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    func configure() {
+    private let newsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Russia Claims Nearly 1,000 Ukranians Have Surrendered At Azovstal Surrendered At Azovstal"
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 3
+        return label
+    }()
+    
+    private let detailButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Learn More →", for: .normal)
+        button.tintColor = .white
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    //MARK: - CONSTRAINTS
+    
+    func configureUI() {
+        configureImageViewConstraints()
+        configureTrendingNewsLabelConstraints()
+        configureNewsTitleLableConstraints()
+        configureDetailButton()
+    }
+    
+    func configureImageViewConstraints() {
         addSubview(newsImageView)
-        newsImageView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             newsImageView.topAnchor.constraint(equalTo: topAnchor),
             newsImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             newsImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             newsImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+    
+    func configureTrendingNewsLabelConstraints() {
+        addSubview(trendingNewsLabel)
+        
+        NSLayoutConstraint.activate([
+            trendingNewsLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            trendingNewsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            trendingNewsLabel.widthAnchor.constraint(equalToConstant: 120),
+            trendingNewsLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
+    func configureNewsTitleLableConstraints() {
+        addSubview(newsTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            newsTitleLabel.topAnchor.constraint(equalTo: trendingNewsLabel.bottomAnchor, constant: 40),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        ])
+    }
+    
+    func configureDetailButton() {
+        addSubview(detailButton)
+        
+        NSLayoutConstraint.activate([
+            detailButton.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 10),
+            detailButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            detailButton.widthAnchor.constraint(equalToConstant: 150),
+            detailButton.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }

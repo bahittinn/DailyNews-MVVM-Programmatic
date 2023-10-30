@@ -24,9 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createTabbar() -> UITabBarController {
         let vc = UINavigationController(rootViewController: HomeController())
-        let vc2 = UINavigationController(rootViewController: ViewController())
-        let vc3 = UINavigationController(rootViewController: ViewController())
-        let vc4 = UINavigationController(rootViewController: ViewController())
+        let vc2 = UINavigationController(rootViewController: SearchController())
+        let vc3 = UINavigationController(rootViewController: SavedController())
+        let vc4 = UINavigationController(rootViewController: ProfileController())
         
         vc.tabBarItem.image  = UIImage(systemName: "house")
         vc.tabBarItem.title  = "Home"
