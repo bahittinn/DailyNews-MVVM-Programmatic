@@ -33,6 +33,16 @@ final class HomeController: UIViewController {
         return collectionView
     }()
     
+    private let popularTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(PopularCell.self, forCellReuseIdentifier: PopularCell.reuseID)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = 100
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
+        return tableView
+    }()
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +53,13 @@ final class HomeController: UIViewController {
     }
     
     //MARK: - Constraints
+    
     func configureContraints() {
+        configureCollectionView()
+        configureTableView()
+    }
+    
+    func configureCollectionView() {
         view.addSubview(trendingCollectionView)
         trendingCollectionView.translatesAutoresizingMaskIntoConstraints = false
         trendingCollectionView.delegate   = self
@@ -54,6 +70,20 @@ final class HomeController: UIViewController {
             trendingCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             trendingCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             trendingCollectionView.heightAnchor.constraint(equalToConstant: 260)
+        ])
+    }
+    
+    
+    private func configureTableView() {
+        view.addSubview(popularTableView)
+        popularTableView.delegate   = self
+        popularTableView.dataSource = self
+        
+        NSLayoutConstraint.activate([
+            popularTableView.topAnchor.constraint(equalTo: trendingCollectionView.bottomAnchor, constant: 20),
+            popularTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            popularTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            popularTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -81,6 +111,8 @@ final class HomeController: UIViewController {
     }
 }
 
+//MARK: - Datasource & Deletage
+
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -88,6 +120,18 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCell.reuseID, for: indexPath) as! TrendingCell        
+        return cell
+    }
+}
+
+extension HomeController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PopularCell.reuseID, for: indexPath) as! PopularCell
+        cell.configureUI()
         return cell
     }
 }
