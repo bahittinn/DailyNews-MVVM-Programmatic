@@ -23,7 +23,7 @@ final class TrendingCell: UICollectionViewCell {
     private let trendingNewsLabel: UILabel = {
         let label = UILabel()
         label.text = "Trending News"
-        label.font = .systemFont(ofSize: 12)
+        label.font = .boldSystemFont(ofSize: 12)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .lightGray

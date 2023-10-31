@@ -22,10 +22,41 @@ final class PopularCell: UITableViewCell {
         return imageView
     }()
     
+    private let newsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Flight Data Suggests China Eastern Plane Deliberately Crashed"
+        label.font = .boldSystemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let newsFromLabel: UILabel = {
+        let label = UILabel()
+        label.text = "By BBC News"
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .secondaryLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let readTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "⚇ 1 min read"
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .secondaryLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //MARK: - Constraints
     
     func configureUI() {
         configureImageViewConstraints()
+        configureNewsTitleContraints()
+        configureFromLabelConstraints()
+        configureReadTimeLabelConstraints()
     }
     
     func configureImageViewConstraints() {
@@ -40,6 +71,30 @@ final class PopularCell: UITableViewCell {
     }
     
     func configureNewsTitleContraints() {
+        addSubview(newsTitleLabel)
         
+        NSLayoutConstraint.activate([
+            newsTitleLabel.topAnchor.constraint(equalTo: newsImageView.topAnchor, constant: 5),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 15),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+        ])
+    }
+    
+    func configureFromLabelConstraints() {
+        addSubview(newsFromLabel)
+        
+        NSLayoutConstraint.activate([
+            newsFromLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 10),
+            newsFromLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 15),
+        ])
+    }
+    
+    func configureReadTimeLabelConstraints() {
+        addSubview(readTimeLabel)
+        
+        NSLayoutConstraint.activate([
+            readTimeLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 10),
+            readTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+        ])
     }
 }

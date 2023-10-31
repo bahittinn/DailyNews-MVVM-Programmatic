@@ -7,18 +7,16 @@
 
 import UIKit
 
+protocol HomeControllerInterface: AnyObject {
+    func configureUI()
+    func reloadCollectionView()
+}
+
 final class HomeController: UIViewController {
     
     //MARK: - Variables
     
-    public var screenWidth: CGFloat {
-        return UIScreen.main.bounds.width
-    }
-    
-    // Screen height.
-    public var screenHeight: CGFloat {
-        return UIScreen.main.bounds.height
-    }
+    private let viewModel = HomeViewModel()
     
     private let trendingCollectionView: UICollectionView = {
         /// Layout Settings
@@ -43,6 +41,23 @@ final class HomeController: UIViewController {
         return tableView
     }()
     
+    private let populerNewsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Popular News"
+        label.font = .boldSystemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let showMoreLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Show More"
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .secondaryLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +71,10 @@ final class HomeController: UIViewController {
     
     func configureContraints() {
         configureCollectionView()
+        configurePopularNewsLabelConstraints()
+        configureShowMoreLabelConstraints()
         configureTableView()
+        
     }
     
     func configureCollectionView() {
@@ -73,6 +91,26 @@ final class HomeController: UIViewController {
         ])
     }
     
+    private func configurePopularNewsLabelConstraints() {
+        view.addSubview(populerNewsLabel)
+        
+        NSLayoutConstraint.activate([
+            populerNewsLabel.topAnchor.constraint(equalTo: trendingCollectionView.bottomAnchor, constant: 10),
+            populerNewsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            populerNewsLabel.widthAnchor.constraint(equalToConstant: 150),
+            populerNewsLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+    
+    private func configureShowMoreLabelConstraints() {
+        view.addSubview(showMoreLabel)
+        
+        NSLayoutConstraint.activate([
+            showMoreLabel.topAnchor.constraint(equalTo: populerNewsLabel.topAnchor),
+            showMoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            showMoreLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
     
     private func configureTableView() {
         view.addSubview(popularTableView)
@@ -80,12 +118,15 @@ final class HomeController: UIViewController {
         popularTableView.dataSource = self
         
         NSLayoutConstraint.activate([
-            popularTableView.topAnchor.constraint(equalTo: trendingCollectionView.bottomAnchor, constant: 20),
+            popularTableView.topAnchor.constraint(equalTo: populerNewsLabel.bottomAnchor),
             popularTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             popularTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             popularTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+   
+     
     
     //MARK: - Functions
     
@@ -93,6 +134,7 @@ final class HomeController: UIViewController {
         /// LEFT BUTTONS
         let menuButton = UIBarButtonItem(title: "Menu", image: UIImage(named: "menuicon"), target: self, action: nil)
         menuButton.tintColor = .label
+        
         let label = UILabel()
         label.textColor = .label
         label.font = .boldSystemFont(ofSize: 18)
@@ -125,6 +167,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -132,6 +175,23 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PopularCell.reuseID, for: indexPath) as! PopularCell
         cell.configureUI()
+        cell.selectionStyle = .none
+        cell.layer.cornerRadius = 10
         return cell
+    }
+}
+
+extension HomeController: HomeControllerInterface {
+    func configureUI() {
+        view.backgroundColor = .systemBackground
+        
+        configureNavigationBar()
+        configureContraints()
+    }
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.trendingCollectionView.reloadData()
+        }
     }
 }
