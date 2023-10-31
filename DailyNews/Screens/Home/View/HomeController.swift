@@ -61,10 +61,8 @@ final class HomeController: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
-        configureNavigationBar()
-        configureContraints()
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
     
     //MARK: - Constraints
@@ -74,7 +72,6 @@ final class HomeController: UIViewController {
         configurePopularNewsLabelConstraints()
         configureShowMoreLabelConstraints()
         configureTableView()
-        
     }
     
     func configureCollectionView() {
@@ -125,8 +122,8 @@ final class HomeController: UIViewController {
         ])
     }
     
-   
-     
+    
+    
     
     //MARK: - Functions
     
@@ -148,7 +145,7 @@ final class HomeController: UIViewController {
         
         let searchButton = UIBarButtonItem(title: "Search", image: UIImage(named: "searchicon"), target: self, action: nil)
         searchButton.tintColor = .label
-                
+        
         navigationItem.rightBarButtonItems = [bellButton, searchButton]
     }
 }
@@ -157,11 +154,15 @@ final class HomeController: UIViewController {
 
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.trendingNews.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCell.reuseID, for: indexPath) as! TrendingCell        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCell.reuseID, for: indexPath) as! TrendingCell
+        if let imageURL = URL(string: viewModel.trendingNews[indexPath.row].urlToImage ?? "") {
+            let title = viewModel.trendingNews[indexPath.row].title ??  ""
+            cell.makeCell(with: title, imageURL: imageURL)
+        }
         return cell
     }
 }
@@ -169,7 +170,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.trendingNews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,6 +178,16 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         cell.configureUI()
         cell.selectionStyle = .none
         cell.layer.cornerRadius = 10
+        
+        
+        
+        if let imageURL = URL(string: viewModel.trendingNews[indexPath.row].urlToImage ?? "") {
+            let title = viewModel.trendingNews[indexPath.row].title ??  ""
+            let postedBY = viewModel.trendingNews[indexPath.row].source?.name ?? "Bahittin"
+            cell.makeCell(title: title, imageURL: imageURL, postedBy: postedBY)
+        }
+        
+        
         return cell
     }
 }
@@ -192,6 +203,7 @@ extension HomeController: HomeControllerInterface {
     func reloadCollectionView() {
         DispatchQueue.main.async {
             self.trendingCollectionView.reloadData()
+            self.popularTableView.reloadData()
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class PopularCell: UITableViewCell {
     static let reuseID = "PopularCell"
@@ -96,5 +97,19 @@ final class PopularCell: UITableViewCell {
             readTimeLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 10),
             readTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
         ])
+    }
+    
+    func makeCell(title: String, imageURL: URL, postedBy: String) {
+        DispatchQueue.main.async {
+            self.newsImageView.kf.setImage(with: imageURL)
+            self.newsFromLabel.text = postedBy
+            self.newsTitleLabel.text = title
+        }
+    }
+    
+    override func prepareForReuse() {
+        newsImageView.image = nil
+        newsFromLabel.text  = nil
+        newsTitleLabel.text = nil
     }
 }

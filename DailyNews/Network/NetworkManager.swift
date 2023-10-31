@@ -11,7 +11,23 @@ struct NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    func fetchTrendingNews(completion: @escaping (Result<Trending, Error>) -> ()) {
+    func fetchTrendingNews(completion: @escaping (Result<[Article], Error>) -> ()) {
+        guard let url = URL(string: "\(Constants.Trending_Url.rawValue)\(Constants.Api_Key.rawValue)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(Trending.self, from: data)
+                completion(.success(decodedData.articles ?? []))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchPopularNews(completion: @escaping (Result<[Article], Error>) -> ()) {
         guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=bf5ad777c9364b59b25d4e2142be2ebf") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -19,9 +35,9 @@ struct NetworkManager {
             
             do {
                 let decodedData = try JSONDecoder().decode(Trending.self, from: data)
-                print(decodedData)
+                completion(.success(decodedData.articles ?? []))
             } catch {
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
         task.resume()

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TrendingCell: UICollectionViewCell {
     static let reuseID = "TrendingCell"
@@ -113,5 +114,19 @@ final class TrendingCell: UICollectionViewCell {
             detailButton.widthAnchor.constraint(equalToConstant: 150),
             detailButton.heightAnchor.constraint(equalToConstant: 35)
         ])
+    }
+    
+    //MARK: - Set UI
+    
+    func makeCell(with title: String, imageURL: URL) {
+        DispatchQueue.main.async {
+            self.newsTitleLabel.text = title
+            self.newsImageView.kf.setImage(with: imageURL)
+        }
+    }
+    
+    override func prepareForReuse() {
+        newsTitleLabel.text = nil
+        newsImageView.image = nil
     }
 }
