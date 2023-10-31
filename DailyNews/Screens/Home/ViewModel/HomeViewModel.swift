@@ -11,6 +11,7 @@ protocol HomeViewModelInterface {
     var view: HomeControllerInterface? { get set }
     func viewDidLoad()
     func getTrendingNews()
+    func getPopularNews()
 }
 
 final class HomeViewModel {

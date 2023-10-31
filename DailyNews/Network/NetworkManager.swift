@@ -43,4 +43,19 @@ struct NetworkManager {
         task.resume()
     }
     
+    func fetchPopularNews(with search: String,completion: @escaping (Result<[Article], Error>) -> ()) {
+        guard let url = URL(string: "\(Constants.Search_Url.rawValue)q=\(search)&pageSize=20&apiKey=\(Constants.Api_Key.rawValue)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(Trending.self, from: data)
+                completion(.success(decodedData.articles ?? []))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
 }

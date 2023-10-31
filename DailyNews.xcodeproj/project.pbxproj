@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6474B69D2AF18ED0003B72DF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */; };
 		648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD612AEFBC70001CC031 /* TrendingCell.swift */; };
 		648FDD682AEFCD3C001CC031 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD672AEFCD3C001CC031 /* SearchController.swift */; };
 		648FDD722AEFCDFA001CC031 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD712AEFCDFA001CC031 /* ProfileController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		648FDD612AEFBC70001CC031 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		648FDD672AEFCD3C001CC031 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		648FDD712AEFCDFA001CC031 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		648FDD662AEFCD1D001CC031 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				648FDD762AEFD14C001CC031 /* PopularCell.swift in Sources */,
 				64AE92BB2AF036BD00969959 /* Trending.swift in Sources */,
 				64AE92B72AEFE54000969959 /* NetworkManager.swift in Sources */,
+				6474B69D2AF18ED0003B72DF /* SearchViewModel.swift in Sources */,
 				648FDD682AEFCD3C001CC031 /* SearchController.swift in Sources */,
 				64FCA43C2AC8AE3800C0102F /* ViewController.swift in Sources */,
 				648FDD742AEFCE05001CC031 /* SavedController.swift in Sources */,
