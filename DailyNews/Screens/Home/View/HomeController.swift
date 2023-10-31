@@ -10,6 +10,7 @@ import UIKit
 protocol HomeControllerInterface: AnyObject {
     func configureUI()
     func reloadCollectionView()
+    func reloadTableView()
 }
 
 final class HomeController: UIViewController {
@@ -170,7 +171,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.trendingNews.count
+        return viewModel.popularNews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -179,15 +180,14 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.layer.cornerRadius = 10
         
+        let title = viewModel.popularNews[indexPath.row].title ??  ""
+        let postedBY = viewModel.popularNews[indexPath.row].source?.name ?? "Bahittin"
         
-        
-        if let imageURL = URL(string: viewModel.trendingNews[indexPath.row].urlToImage ?? "") {
-            let title = viewModel.trendingNews[indexPath.row].title ??  ""
-            let postedBY = viewModel.trendingNews[indexPath.row].source?.name ?? "Bahittin"
+        if let imageURL = URL(string: viewModel.popularNews[indexPath.row].urlToImage ?? "") {
             cell.makeCell(title: title, imageURL: imageURL, postedBy: postedBY)
+        } else {
+            cell.makeCell(title: title, imageURL: URL(string: Constants.null_image.rawValue)!, postedBy: postedBY)
         }
-        
-        
         return cell
     }
 }
@@ -203,6 +203,10 @@ extension HomeController: HomeControllerInterface {
     func reloadCollectionView() {
         DispatchQueue.main.async {
             self.trendingCollectionView.reloadData()
+        }
+    }
+    func reloadTableView() {
+        DispatchQueue.main.async {
             self.popularTableView.reloadData()
         }
     }

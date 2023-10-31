@@ -36,9 +36,9 @@ final class TrendingCell: UICollectionViewCell {
     
     private let newsImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.alpha = 0.9
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
-        imageView.image = UIImage(named: "denemeimage")
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -46,7 +46,6 @@ final class TrendingCell: UICollectionViewCell {
     
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Russia Claims Nearly 1,000 Ukranians Have Surrendered At Azovstal Surrendered At Azovstal"
         label.font = .boldSystemFont(ofSize: 20)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +57,7 @@ final class TrendingCell: UICollectionViewCell {
     private let detailButton: UIButton = {
         let button = UIButton()
         button.setTitle("Learn More →", for: .normal)
-        button.tintColor = .white
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
