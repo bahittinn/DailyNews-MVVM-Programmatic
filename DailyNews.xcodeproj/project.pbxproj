@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6474B69D2AF18ED0003B72DF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */; };
 		648B4C002AF2D6C800C613B7 /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B4BFF2AF2D6C700C613B7 /* NewsDetailController.swift */; };
+		648B4C022AF2DAD000C613B7 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B4C012AF2DAD000C613B7 /* UIView+Ext.swift */; };
+		648B4C052AF2DB1800C613B7 /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B4C042AF2DB1800C613B7 /* CornerView.swift */; };
+		648B4C072AF2DC4100C613B7 /* NewsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B4C062AF2DC4100C613B7 /* NewsImage.swift */; };
 		648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD612AEFBC70001CC031 /* TrendingCell.swift */; };
 		648FDD682AEFCD3C001CC031 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD672AEFCD3C001CC031 /* SearchController.swift */; };
 		648FDD722AEFCDFA001CC031 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FDD712AEFCDFA001CC031 /* ProfileController.swift */; };
@@ -31,6 +34,9 @@
 /* Begin PBXFileReference section */
 		6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		648B4BFF2AF2D6C700C613B7 /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
+		648B4C012AF2DAD000C613B7 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		648B4C042AF2DB1800C613B7 /* CornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
+		648B4C062AF2DC4100C613B7 /* NewsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImage.swift; sourceTree = "<group>"; };
 		648FDD612AEFBC70001CC031 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		648FDD672AEFCD3C001CC031 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		648FDD712AEFCDFA001CC031 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -95,9 +101,19 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		648B4C032AF2DAF600C613B7 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				648B4C042AF2DB1800C613B7 /* CornerView.swift */,
+				648B4C062AF2DC4100C613B7 /* NewsImage.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		648FDD5B2AEFA721001CC031 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				648B4C032AF2DAF600C613B7 /* CustomViews */,
 				648FDD602AEFBC54001CC031 /* Cells */,
 				64AE92B82AEFE61600969959 /* Constants.swift */,
 			);
@@ -276,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				64FCA4542AC8BAB700C0102F /* ReusableView.swift */,
+				648B4C012AF2DAD000C613B7 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,6 +406,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648B4C072AF2DC4100C613B7 /* NewsImage.swift in Sources */,
+				648B4C022AF2DAD000C613B7 /* UIView+Ext.swift in Sources */,
 				64FCA4532AC8B42100C0102F /* HomeController.swift in Sources */,
 				64FCA4552AC8BAB700C0102F /* ReusableView.swift in Sources */,
 				648FDD622AEFBC70001CC031 /* TrendingCell.swift in Sources */,
@@ -401,6 +420,7 @@
 				648B4C002AF2D6C800C613B7 /* NewsDetailController.swift in Sources */,
 				648FDD742AEFCE05001CC031 /* SavedController.swift in Sources */,
 				64AE92BD2AF11E1400969959 /* HomeViewModel.swift in Sources */,
+				648B4C052AF2DB1800C613B7 /* CornerView.swift in Sources */,
 				64FCA4382AC8AE3800C0102F /* AppDelegate.swift in Sources */,
 				64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */,
 				648FDD722AEFCDFA001CC031 /* ProfileController.swift in Sources */,

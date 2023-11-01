@@ -195,6 +195,11 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = NewsDetailController()
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension HomeController: HomeControllerInterface {
