@@ -1,5 +1,5 @@
 //
-//  CornerView.swift
+//  TitleLabel.swift
 //  DailyNews
 //
 //  Created by Bahittin on 1.11.2023.
@@ -7,22 +7,20 @@
 
 import UIKit
 
-final class CornerView: UIView {
+final class TitleLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        configure(fontSize: 14)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
-        layer.cornerRadius = 30
-        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    func configure(fontSize: CGFloat) {
+        font = .boldSystemFont(ofSize: fontSize)
+        numberOfLines = 0
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
 }

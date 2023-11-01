@@ -198,6 +198,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = NewsDetailController()
+        detailVC.viewModel.article = viewModel.popularNews[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
