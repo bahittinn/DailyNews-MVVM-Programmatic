@@ -144,10 +144,15 @@ final class HomeController: UIViewController {
         let bellButton = UIBarButtonItem(title: "Bell", image: UIImage(named: "bellicon"), target: self, action: nil)
         bellButton.tintColor = .label
         
-        let searchButton = UIBarButtonItem(title: "Search", image: UIImage(named: "searchicon"), target: self, action: nil)
+        let searchButton = UIBarButtonItem(title: "Search", image: UIImage(named: "searchicon"), target: self, action: #selector(showSearchScreen))
         searchButton.tintColor = .label
         
         navigationItem.rightBarButtonItems = [bellButton, searchButton]
+    }
+    
+    @objc func showSearchScreen() {
+        let tabBarVC = self.tabBarController!
+        tabBarVC.selectedIndex = 1
     }
 }
 
