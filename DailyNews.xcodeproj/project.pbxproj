@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		644C86902AF2EA1F0085EAA7 /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C868F2AF2EA1F0085EAA7 /* NewsDetailViewModel.swift */; };
+		644C86922AF2EFC80085EAA7 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C86912AF2EFC80085EAA7 /* ContentLabel.swift */; };
 		6474B69D2AF18ED0003B72DF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */; };
 		648B4C002AF2D6C800C613B7 /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B4BFF2AF2D6C700C613B7 /* NewsDetailController.swift */; };
 		648B4C022AF2DAD000C613B7 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B4C012AF2DAD000C613B7 /* UIView+Ext.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		644C868F2AF2EA1F0085EAA7 /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		644C86912AF2EFC80085EAA7 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
 		6474B69C2AF18ED0003B72DF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		648B4BFF2AF2D6C700C613B7 /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
 		648B4C012AF2DAD000C613B7 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				648B4C062AF2DC4100C613B7 /* NewsImage.swift */,
 				648B4C082AF2DFA900C613B7 /* TitleLabel.swift */,
 				648B4C0A2AF2E29100C613B7 /* SecondaryLabel.swift */,
+				644C86912AF2EFC80085EAA7 /* ContentLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				64FCA43A2AC8AE3800C0102F /* SceneDelegate.swift in Sources */,
 				648FDD722AEFCDFA001CC031 /* ProfileController.swift in Sources */,
 				64AE92B92AEFE61600969959 /* Constants.swift in Sources */,
+				644C86922AF2EFC80085EAA7 /* ContentLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

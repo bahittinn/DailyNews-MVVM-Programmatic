@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         vc.tabBarItem.image  = UIImage(systemName: "house")
         vc.tabBarItem.title  = "Home"
         
+        
         vc2.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         vc2.tabBarItem.title  = "Search"
         
@@ -42,6 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabbar = UITabBarController()
         tabbar.setViewControllers([vc, vc2, vc3, vc4], animated: true)
+    
+        UITabBar.appearance().tintColor = .black
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -220)
         return tabbar
     }

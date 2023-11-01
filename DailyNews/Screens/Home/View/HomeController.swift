@@ -171,6 +171,12 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = NewsDetailController()
+        detailVC.viewModel.article = viewModel.trendingNews[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension HomeController: UITableViewDelegate, UITableViewDataSource {

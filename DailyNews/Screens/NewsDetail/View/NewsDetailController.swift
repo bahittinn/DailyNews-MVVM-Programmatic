@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol NewsDetailInterface: AnyObject {
     func configureUI()
@@ -25,6 +26,7 @@ final class NewsDetailController: UIViewController {
     let myView        = CornerView()
     let newsFromLabel = SecondaryLabel()
     let readTimeLabel = SecondaryLabel()
+    let contentLabel  = ContentLabel()
     
     let padding: CGFloat  = 20
     let fontSize: CGFloat = 17
@@ -46,13 +48,20 @@ extension NewsDetailController: NewsDetailInterface {
         configureTitleLabel()
         configureFromLabelConstraints()
         configureReadTimeLabelConstraints()
-        configureCornerView()
+        configureContentLabel()
     }
     
     func showArticle() {
+        let title   = viewModel.article?.title
+        let source  = viewModel.article?.source?.name
+        let image   = URL(string: (viewModel.article?.urlToImage)!)
+        let content = "\(viewModel.article?.description ?? "Description")"
+        
         DispatchQueue.main.async {
-            self.titleLabel.text    = self.viewModel.article?.title
-            self.newsFromLabel.text = self.viewModel.article?.source?.name
+            self.titleLabel.text    = title
+            self.newsFromLabel.text = source
+            self.contentLabel.text  = content
+            self.newsImageView.kf.setImage(with: image)
         }
     }
 }
@@ -103,14 +112,14 @@ extension NewsDetailController {
         ])
     }
     
-    private func configureCornerView() {
-        view.addSubview(myView)
+    private func configureContentLabel() {
+        view.addSubview(contentLabel)
+        contentLabel.configure(fontSize: 16)
         
         NSLayoutConstraint.activate([
-            myView.topAnchor.constraint(equalTo: newsFromLabel.bottomAnchor,constant: 20),
-            myView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            myView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            myView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            contentLabel.topAnchor.constraint(equalTo: newsFromLabel.bottomAnchor, constant: 20),
+            contentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            contentLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
         ])
     }
     
