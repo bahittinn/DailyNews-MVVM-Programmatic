@@ -136,7 +136,7 @@ extension NewsDetailController {
         navigationItem.leftBarButtonItems = [menuButton, UIBarButtonItem.init(customView: label)]
         
         /// RIGHT BUTTONS
-        let bellButton = UIBarButtonItem(title: "Bell", image: UIImage(named: "bellicon"), target: self, action: nil)
+        let bellButton = UIBarButtonItem(title: "Bell", image: UIImage(systemName: "plus"), target: self, action: nil)
         bellButton.tintColor = .label
         
         let searchButton = UIBarButtonItem(title: "Search", image: UIImage(named: "searchicon"), target: self, action: #selector(showSearchScreen))
