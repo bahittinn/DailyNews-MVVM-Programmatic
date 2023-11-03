@@ -19,8 +19,6 @@ final class NewsDetailController: UIViewController {
     
     var viewModel = NewsDetailViewModel()
     
-    var detailNews: Article!
-    
     let newsImageView = NewsImage(frame: .zero)
     let titleLabel    = TitleLabel()
     let myView        = CornerView()
@@ -136,7 +134,7 @@ extension NewsDetailController {
         navigationItem.leftBarButtonItems = [menuButton, UIBarButtonItem.init(customView: label)]
         
         /// RIGHT BUTTONS
-        let bellButton = UIBarButtonItem(title: "Bell", image: UIImage(systemName: "plus"), target: self, action: nil)
+        let bellButton = UIBarButtonItem(title: "Bell", image: UIImage(systemName: "plus"), target: self, action: #selector(saveNews))
         bellButton.tintColor = .label
         
         let searchButton = UIBarButtonItem(title: "Search", image: UIImage(named: "searchicon"), target: self, action: #selector(showSearchScreen))
@@ -148,5 +146,22 @@ extension NewsDetailController {
     @objc func showSearchScreen() {
         let tabBarVC = self.tabBarController!
         tabBarVC.selectedIndex = 1
+    }
+    
+    @objc func saveNews() {
+        //let saveNews = PersistanceManager.saveNews(news: viewModel.article!)
+        DispatchQueue.main.async {
+            let alertVC = NewsAlertVC()
+            alertVC.modalPresentationStyle = .overFullScreen
+            alertVC.modalTransitionStyle   = .crossDissolve
+            self.present(alertVC, animated: true)
+        }
+        
+        if saveNews == nil {
+            print("show success screen")
+        } else {
+            print("show error")
+        }
+        
     }
 }
