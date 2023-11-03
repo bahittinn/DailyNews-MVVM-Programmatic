@@ -149,19 +149,7 @@ extension NewsDetailController {
     }
     
     @objc func saveNews() {
-        //let saveNews = PersistanceManager.saveNews(news: viewModel.article!)
-        DispatchQueue.main.async {
-            let alertVC = NewsAlertVC()
-            alertVC.modalPresentationStyle = .overFullScreen
-            alertVC.modalTransitionStyle   = .crossDissolve
-            self.present(alertVC, animated: true)
-        }
-        
-        if saveNews == nil {
-            print("show success screen")
-        } else {
-            print("show error")
-        }
-        
+        let saveNews = PersistanceManager.saveNews(news: viewModel.article!)
+        showAlertMainThread(with: "You have successfully save this news. You can check from the saved page")
     }
 }

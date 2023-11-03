@@ -116,6 +116,7 @@ extension SavedController: UITableViewDelegate, UITableViewDataSource {
         
         PersistanceManager.updateNews(news: news)
         viewModel.getSavedNews()
+        showAlertMainThread(with: "You have successfully delete this news from saved news")
     }
 }
 

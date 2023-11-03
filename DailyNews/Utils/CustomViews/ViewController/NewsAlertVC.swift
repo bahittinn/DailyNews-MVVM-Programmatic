@@ -9,56 +9,71 @@ import UIKit
 
 final class NewsAlertVC: UIViewController {
     
-    private let denemeButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius    = 10
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("OK", for: .normal)
-        button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
-        return button
-    }()
+    //MARK: -  Variables
+    private let titleLabel    = TitleLabel()
+    private let closeButton   = NewsButton()
+    private let containerView = NewsContainerView()
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
-        return view
-    }()
+    var alertTitle: String?
     
+    //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .black.withAlphaComponent(0.75)
         configureContainerView()
+        configureTitleLabel()
         configureButton()
     }
     
-    func configureContainerView() {
+    init(alertTitle: String) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.alertTitle = alertTitle
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Constraints
+    
+    private func configureContainerView() {
         view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.widthAnchor.constraint(equalToConstant: 280),
-            containerView.heightAnchor.constraint(equalToConstant: 220)
+            containerView.heightAnchor.constraint(equalToConstant: 120)
         ])
     }
     
-    func configureButton() {
-        containerView.addSubview(denemeButton)
-        denemeButton.translatesAutoresizingMaskIntoConstraints = false
+    private func configureTitleLabel() {
+        containerView.addSubview(titleLabel)
+        titleLabel.text =  alertTitle ?? "Error"
         
         NSLayoutConstraint.activate([
-            denemeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
-            denemeButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            denemeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
-            denemeButton.heightAnchor.constraint(equalToConstant: 35)
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
         ])
     }
     
+    private func configureButton() {
+        containerView.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            closeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
+            closeButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            closeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            closeButton.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
+    //MARK: - Selectors
     
     @objc func dismissVC() {
         dismiss(animated: true)
